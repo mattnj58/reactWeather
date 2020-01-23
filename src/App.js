@@ -96,11 +96,9 @@ class App extends React.Component{
   //const country = e.target.elements.country.value;
 
   if(city){
-    const api_call=await fetch(`${apiKey.base}weather?APPID=${apiKey.key}&city=${city},us&units=imperial`);
+    const api_call=await fetch(`${apiKey.base}weather?APPID=${apiKey.key}&q=${city},us&units=imperial`);
     const res = await api_call.json();
     console.log(res);
-
-    
 
   this.setState({
     city:`${res.name}`,
