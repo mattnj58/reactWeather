@@ -19,7 +19,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
  */
 const apiKey = {
   key: '7b7154eb47e573afde1536472685b7fb',
-  base: 'http://api.openweathermap.org/data/2.5/'
+  base: 'https://api.openweathermap.org/data/2.5/'
 }
 
 /*const currentDate = (d) => {
