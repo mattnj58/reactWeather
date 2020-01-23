@@ -18,8 +18,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
  * https://openweathermap.org/current
  */
 const apiKey = {
-  key: '7b7154eb47e573afde1536472685b7fb',
-  base: 'https://api.openweathermap.org/data/2.5/'
+  key: 'f919577904474202971e411519be3240',
+  base: 'https://api.weatherbit.io/v2.0/current '
 }
 
 /*const currentDate = (d) => {
