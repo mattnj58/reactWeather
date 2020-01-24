@@ -22,7 +22,7 @@ const apiKey = {
   base: 'https://api.openweathermap.org/data/2.5/'
 }
 
-/*const currentDate = (d) => {
+const currentDate=(d)=>{
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -31,13 +31,16 @@ const apiKey = {
   let month = months[d.getMonth()];
   let year = d.getFullYear();
 
-  return `${day} ${date} ${month} ${year}`
-} */
+  return `${day} ${month} ${date}, ${year}`
+}
+
+
 
 class App extends React.Component{
  constructor(){
    super();
    this.state={
+     date:undefined,
      city:undefined,
      country:undefined,
      icon:undefined,
@@ -58,7 +61,7 @@ class App extends React.Component{
     Clear: "wi-day-sunny",
     Clouds: "wi-day-fog"
    }
- } 
+ }
 
  getWeatherIcon(icons, rangeId){
   switch(true){
@@ -101,6 +104,7 @@ class App extends React.Component{
     console.log(res);
 
   this.setState({
+    date:currentDate(new Date()),
     city:`${res.name}`,
     temp:Math.round(res.main.temp),
     temp_max:Math.round(res.main.temp_max),
@@ -120,6 +124,7 @@ class App extends React.Component{
       <div className='App'>
         <Form loadweather={this.getWeather}/>
         <Weather 
+        date={this.state.date}
         city={this.state.city}
         temp={this.state.temp}
         temp_max={this.state.temp_max}

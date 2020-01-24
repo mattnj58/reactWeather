@@ -1,10 +1,12 @@
 import React from 'react';
 
 
+
 const Weather = (props) => {
     return(
         <div className='container text-light style = {{height: "100vh"}}'>
             <div className='cards pt-4'>
+                <h1 className='py-4'>{props.date}</h1>
                 <h1>{props.city}</h1>
                 <h5 className='py-4'>
                     <i className={`wi ${props.weatherIcon} display-1`}></i>
