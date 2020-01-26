@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const Weather = (props) => {
     return(
         <div className='container text-light style = {{height: "100vh"}}'>

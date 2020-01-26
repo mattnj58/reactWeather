@@ -12,6 +12,7 @@ import './App.css';
 /** Dependencies*/
 import "weather-icons/css/weather-icons.css"; //git project from https://github.com/erikflowers/weather-icons
 import "bootstrap/dist/css/bootstrap.min.css";
+import Forecast from './app_components/forecast.component';
 
 /**
  * Here is the api documentation for openweathermap
@@ -49,7 +50,8 @@ class App extends React.Component{
      temp_max:undefined,
      temp_min:undefined,
      description:"",
-     error:false
+     error:false,
+     forecast:undefined
    }
 
    this.weatherIcon={
@@ -100,8 +102,10 @@ class App extends React.Component{
 
   if(city){
     const api_call=await fetch(`${apiKey.base}weather?APPID=${apiKey.key}&q=${city},us&units=imperial`);
+    const forecast_call = await fetch(`${apiKey.base}forecast?APPID=${apiKey.key}&q=${city},us&units=imperial`);
     const res = await api_call.json();
-    console.log(res);
+    const for_res = await forecast_call.json();
+    let days=for_res.list;
 
   this.setState({
     date:currentDate(new Date()),
@@ -111,8 +115,10 @@ class App extends React.Component{
     temp_min:Math.round(res.main.temp_min),
     description:res.weather[0].description,
     icon: this.getWeatherIcon(res.weather[0].icon),
+    forecast:days,
     error:false
   });
+
 
   this.getWeatherIcon(this.weatherIcon, res.weather[0].id);
   } else {
@@ -131,6 +137,7 @@ class App extends React.Component{
         temp_min={this.state.temp_min}
         description={this.state.description}
         weatherIcon={this.state.icon}/>
+        <Forecast forecast={this.state.forecast}/>
       </div>
     );
   }

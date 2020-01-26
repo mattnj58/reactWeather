@@ -1,7 +1,7 @@
 import React from 'react';
 import './form.style.css';
 
-const Form = props => {
+const Form = (props) => {
     return (
       <div className="container h-100">
         <form onSubmit={props.loadweather}>
@@ -25,7 +25,7 @@ const Form = props => {
     );
   };
   
-  const error = props => {
+  const error = (props) => {
     return (
       <div className="alert alert-danger mx-5" role="alert">
         Please Enter City and Country...!
