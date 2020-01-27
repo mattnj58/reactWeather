@@ -3,7 +3,7 @@ form {
   }
   
   form input[name="city"] {
-      margin: auto;
+    margin: auto;
     background-color: transparent;
     color: white;
     border: none;
