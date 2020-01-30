@@ -1,6 +1,8 @@
 .App{
     text-align: center;
     height: auto;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    background: lightgrey;
 }

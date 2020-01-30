@@ -16,9 +16,9 @@ const Forecast = (props) =>{
 					<Table key={index}>
 						<tbody>
 							<tr>
-								<td>{returnTime(value.dt)}</td>
-								<td>{Math.round(value.main.temp_max)}&deg;F</td>
-								<td>{Math.round(value.main.temp_min)}&deg;F</td>
+								<td align="left">{returnTime(value.dt)}</td>
+								<td align='center'>{Math.round(value.main.temp_max)}&deg;F</td>
+								<td align="right">{Math.round(value.main.temp_min)}&deg;F</td>
 							</tr>
 						</tbody>
 					</Table>

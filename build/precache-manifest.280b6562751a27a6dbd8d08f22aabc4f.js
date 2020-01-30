@@ -1,35 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "90946ad12587d4a4d40df374e2b13e05",
+    "revision": "7c8d6ac6bde31bfe4bbe335bbcc19748",
     "url": "/reactweather/index.html"
   },
   {
-    "revision": "b7a494f191a250f9c175",
+    "revision": "d71a662cad978da54cc9",
     "url": "/reactweather/static/css/2.508434d0.chunk.css"
   },
   {
-    "revision": "5d69b7071098413ad17e",
-    "url": "/reactweather/static/css/main.26c834f5.chunk.css"
+    "revision": "f02271a21368d7fd08d2",
+    "url": "/reactweather/static/css/main.206a6091.chunk.css"
   },
   {
-    "revision": "b7a494f191a250f9c175",
-    "url": "/reactweather/static/js/2.bd83149e.chunk.js"
+    "revision": "d71a662cad978da54cc9",
+    "url": "/reactweather/static/js/2.6810a9c7.chunk.js"
   },
   {
-    "revision": "d705cb622423d72c5defbf368ca70dcc",
-    "url": "/reactweather/static/js/2.bd83149e.chunk.js.LICENSE"
+    "revision": "8a14dcea7ad8b593c1e83c11f7ba1a89",
+    "url": "/reactweather/static/js/2.6810a9c7.chunk.js.LICENSE"
   },
   {
-    "revision": "5d69b7071098413ad17e",
-    "url": "/reactweather/static/js/main.3e0b798a.chunk.js"
+    "revision": "f02271a21368d7fd08d2",
+    "url": "/reactweather/static/js/main.d5ab3bd9.chunk.js"
   },
   {
     "revision": "8d02766994a11c4b9709",
     "url": "/reactweather/static/js/runtime-main.03cd2c18.js"
-  },
-  {
-    "revision": "55d5567d5080cf9a8f294bad872ffc08",
-    "url": "/reactweather/static/media/blur-background-1187974.55d5567d.jpg"
   },
   {
     "revision": "1cd48d78f06d33973d9d761d426e69bf",
