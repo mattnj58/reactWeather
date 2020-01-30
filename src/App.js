@@ -102,7 +102,7 @@ class App extends React.Component{
 
   if(city){
     const api_call=await fetch(`${apiKey.base}weather?APPID=${apiKey.key}&q=${city},us&units=imperial`);
-    const forecast_call = await fetch(`${apiKey.base}forecast?APPID=${apiKey.key}&q=${city},us&units=imperial`);
+    const forecast_call = await fetch(`${apiKey.base}forecast?APPID=${apiKey.key}&q=${city},us&units=imperial&cnt=360`);
     const res = await api_call.json();
     const for_res = await forecast_call.json();
     let days=for_res.list;
@@ -118,6 +118,8 @@ class App extends React.Component{
     forecast:days,
     error:false
   });
+
+  console.log(this.state.forecast)
 
 
   this.getWeatherIcon(this.weatherIcon, res.weather[0].id);
