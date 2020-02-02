@@ -7,4 +7,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - `npm run build` to build the app for production
 - `npm run deploy` to build the app for production and to deploy it to github pages
 
-This is a simple React app that tell the weather using the openweathermap.org api. 
+This is a simple React app that tells the current weather using the openweathermap.org api. 
+It also shows the forecast for the next 5 days in 3 hour intervals
