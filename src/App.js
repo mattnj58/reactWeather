@@ -51,7 +51,8 @@ class App extends React.Component{
      temp_min:undefined,
      description:"",
      error:false,
-     forecast:undefined
+     forecast:undefined,
+     resStatus:200
    }
 
    this.weatherIcon={
@@ -101,36 +102,44 @@ class App extends React.Component{
   //const country = e.target.elements.country.value;
 
   if(city){
-    const api_call=await fetch(`${apiKey.base}weather?APPID=${apiKey.key}&q=${city},us&units=imperial`);
+    const api_call = await fetch(`${apiKey.base}weather?APPID=${apiKey.key}&q=${city},us&units=imperial`);
     const forecast_call = await fetch(`${apiKey.base}forecast?APPID=${apiKey.key}&q=${city},us&units=imperial&cnt=360`);
     const res = await api_call.json();
     const for_res = await forecast_call.json();
-    let days=for_res.list;
 
-  this.setState({
-    date:currentDate(new Date()),
-    city:`${res.name}`,
-    temp:Math.round(res.main.temp),
-    temp_max:Math.round(res.main.temp_max),
-    temp_min:Math.round(res.main.temp_min),
-    description:res.weather[0].description,
-    icon: this.getWeatherIcon(res.weather[0].icon),
-    forecast:days,
-    error:false
-  });
+    if(api_call.status===200){
 
-  console.log(this.state.forecast)
+      let days=for_res.list;
 
+      this.setState({
+        date:currentDate(new Date()),
+        city:`${res.name}`,
+        temp:Math.round(res.main.temp),
+        temp_max:Math.round(res.main.temp_max),
+        temp_min:Math.round(res.main.temp_min),
+        description:res.weather[0].description,
+        icon: this.getWeatherIcon(res.weather[0].icon),
+        forecast:days,
+        error:false,
+        resStatus:api_call.status
+      });
 
-  this.getWeatherIcon(this.weatherIcon, res.weather[0].id);
-  } else {
-    this.setState({error:true})
-  }
+      this.getWeatherIcon(this.weatherIcon, res.weather[0].id);
+
+      }else{ 
+
+        this.setState({resStatus: api_call.status})
+
+      }
+
+    } else {
+      this.setState({error:true})
+    }
 }
   render(){
     return(
       <div className='App'>
-        <Form loadweather={this.getWeather}/>
+        <Form loadweather={this.getWeather} resStatus={this.state.resStatus}/>
         <Weather 
         date={this.state.date}
         city={this.state.city}
@@ -139,7 +148,7 @@ class App extends React.Component{
         temp_min={this.state.temp_min}
         description={this.state.description}
         weatherIcon={this.state.icon}/>
-        <Forecast forecast={this.state.forecast}/>
+        <Forecast forecast={this.state.forecast} icon={this.state.icon}/>
       </div>
     );
   }
