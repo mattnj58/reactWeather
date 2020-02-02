@@ -16,8 +16,9 @@ const Forecast = (props) =>{
 					<Table key={index}>
 						<tbody>
 							<tr>
-								<td align="left">{returnTime(value.dt)}</td>
-								<td align="right">{Math.round(value.main.temp)}&deg;F</td>
+								<td align="center" width="30%">{dayOfWeek(new Date())}</td>
+								<td align="center" width="30%">{returnTime(value.dt)}</td>
+								<td align="center" width="30%">{Math.round(value.main.temp)}&deg;F</td>
 							</tr>
 						</tbody>
 					</Table>
@@ -47,7 +48,7 @@ function returnTime(dt){
 		hour= hour-12;
 	}
 
-	var time = dayOfWeek(day) + " " + hour + ampm;
+	var time = hour + ampm;
 
 	return time;
 }
