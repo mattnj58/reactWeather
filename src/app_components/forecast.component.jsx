@@ -16,7 +16,7 @@ const Forecast = (props) =>{
 					<Table key={index}>
 						<tbody>
 							<tr>
-								<td align="center" width="30%">{dayOfWeek(new Date())}</td>
+								<td align="center" width="30%">{dayOfWeek(value.dt)}</td>
 								<td align="center" width="30%">{returnTime(value.dt)}</td>
 								<td align="center" width="30%">{Math.round(value.main.temp)}&deg;F</td>
 							</tr>
@@ -28,8 +28,10 @@ const Forecast = (props) =>{
 	)
 }
 
-function dayOfWeek(index){
-	let day=index%7;
+function dayOfWeek(dt){
+	let date = new Date(dt*1000);
+	let weekDay = date.getDay();
+	let day=weekDay%7;
 	let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 	return days[day];
@@ -38,7 +40,6 @@ function dayOfWeek(index){
 
 function returnTime(dt){
 	let date = new Date(dt*1000);
-	let day = date.getDay();
 	let hour = date.getHours();
 	let ampm = "am";
 
