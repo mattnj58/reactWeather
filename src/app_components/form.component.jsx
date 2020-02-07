@@ -14,7 +14,7 @@ const Form = (props) => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="City"
+                placeholder="Enter City or Zip Code"
                 name="city"
                 autoComplete="off"
               />
