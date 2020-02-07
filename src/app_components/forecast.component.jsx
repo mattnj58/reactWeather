@@ -4,7 +4,7 @@ import React from 'react';
 import "weather-icons/css/weather-icons.css"; //git project from https://github.com/erikflowers/weather-icons
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from 'react-bootstrap';
-
+import * as weatherIcons from '../icons';
 
 const Forecast = (props) =>{
 	let forecast=props.forecast;
@@ -18,6 +18,8 @@ const Forecast = (props) =>{
 							<tr>
 								<td align="center" width="30%">{dayOfWeek(value.dt)}</td>
 								<td align="center" width="30%">{returnTime(value.dt)}</td>
+								<td align='center' width="30%">{value.weather[0].description}</td>
+								{/*<td align='center' width="30%">{weatherIcons.default[value.fIcon[index]].icon}</td>*/}
 								<td align="center" width="30%">{Math.round(value.main.temp)}&deg;F</td>
 							</tr>
 						</tbody>
@@ -27,6 +29,7 @@ const Forecast = (props) =>{
 		:null)
 	)
 }
+
 
 function dayOfWeek(dt){
 	let date = new Date(dt*1000);

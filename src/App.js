@@ -3,6 +3,7 @@
  * https://www.youtube.com/watch?v=IxuqmfO6p28&t=2s 
  * */
 
+
 //Components
 import React from 'react';
 import Weather from './app_components/weather.component';
@@ -16,7 +17,7 @@ import Forecast from './app_components/forecast.component';
 
 /**
  * Here is the api documentation for openweathermap
- * https://openweathermap.org/current
+ * https://openweathermap.org/api
  */
 const apiKey = {
   key: '7b7154eb47e573afde1536472685b7fb',
@@ -52,6 +53,7 @@ class App extends React.Component{
      description:"",
      error:false,
      forecast:undefined,
+     fIcons:undefined,
      resStatus:200
    }
 
@@ -110,6 +112,11 @@ class App extends React.Component{
     if(api_call.status===200){
 
       let days=for_res.list;
+      let forIcons=[]
+
+      for (var fIcon = 0; fIcon < days.length; fIcon++) {
+        forIcons.push(days[fIcon].weather[0].icon);
+      }
 
       this.setState({
         date:currentDate(new Date()),
@@ -120,6 +127,7 @@ class App extends React.Component{
         description:res.weather[0].description,
         icon: this.getWeatherIcon(res.weather[0].icon),
         forecast:days,
+        fIcons: forIcons,
         error:false,
         resStatus:api_call.status
       });
@@ -148,7 +156,7 @@ class App extends React.Component{
         temp_min={this.state.temp_min}
         description={this.state.description}
         weatherIcon={this.state.icon}/>
-        <Forecast forecast={this.state.forecast} icon={this.state.icon}/>
+        <Forecast forecast={this.state.forecast} description={this.state.description} fIcon={this.state.fIcons}/>
       </div>
     );
   }
