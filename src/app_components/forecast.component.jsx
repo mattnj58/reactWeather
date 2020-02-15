@@ -1,4 +1,5 @@
 import React from 'react';
+import './forecast.style.css'
 
 /** Dependencies*/
 import "weather-icons/css/weather-icons.css"; //git project from https://github.com/erikflowers/weather-icons
@@ -8,19 +9,21 @@ import * as weatherIcons from '../icons';
 
 const Forecast = (props) =>{
 	let forecast=props.forecast;
+	
 
 	return (
-		(forecast ? <div className='container'>
+		(forecast ? 
+			<div className='container' margin='3rem'>
 			{forecast.map((value, index) => {
 				return (
 					<Table key={index}>
 						<tbody>
 							<tr>
 								<td align="center" width="30%">{dayOfWeek(value.dt)}</td>
-								<td align="center" width="30%">{returnTime(value.dt)}</td>
-								<td align='center' width="30%">{value.weather[0].description}</td>
-								{/*<td align='center' width="30%">{weatherIcons.default[value.fIcon[index]].icon}</td>*/}
-								<td align="center" width="30%">{Math.round(value.main.temp)}&deg;F</td>
+								<td align="center" width="20%">{returnTime(value.dt)}</td>
+								<td align='center' width="20%">{value.weather[0].description}</td>
+								<td align='center' width="20%">{value.fIcon}</td>
+								<td align="left" width="40%">{Math.round(value.main.temp)}&deg;F</td>
 							</tr>
 						</tbody>
 					</Table>
@@ -36,6 +39,7 @@ function dayOfWeek(dt){
 	let weekDay = date.getDay();
 	let day=weekDay%7;
 	let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	let foundedDay = [];
 
 	return days[day];
 
