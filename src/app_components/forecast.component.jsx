@@ -15,7 +15,7 @@ const Forecast = (props) =>{
 			<div className='container' margin='3rem'>
 			{forecast.map((value, index) => {
 				console.log(value.weather[0].icon)
-				let iconUrl = `https://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`
+				let iconUrl = `http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`
 				console.log(iconUrl)
 				return (
 					<Table key={index}>
