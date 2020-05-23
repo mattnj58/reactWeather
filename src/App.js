@@ -15,12 +15,14 @@ import "weather-icons/css/weather-icons.css"; //git project from https://github.
 import "bootstrap/dist/css/bootstrap.min.css";
 import Forecast from './app_components/forecast.component';
 
+let envKey = process.env.REACT_APP_API_URL; 
+
 /**
  * Here is the api documentation for openweathermap
  * https://openweathermap.org/api
  */
 const apiKey = {
-  key: '7b7154eb47e573afde1536472685b7fb',
+  key: envKey,
   base: 'https://api.openweathermap.org/data/2.5/'
 }
 
