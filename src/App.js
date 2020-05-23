@@ -56,7 +56,7 @@ class App extends React.Component{
      fIcons:undefined,
      resStatus:200
    }
-
+   
    this.weatherIcon={
     Thunderstorm: "wi-thunderstorm",
     Drizzle: "wi-sleet",
@@ -156,7 +156,7 @@ class App extends React.Component{
         temp_min={this.state.temp_min}
         description={this.state.description}
         weatherIcon={this.state.icon}/>
-        <Forecast forecast={this.state.forecast} description={this.state.description} fIcon={this.state.fIcons}/>
+        <Forecast forecast={this.state.forecast} icon={this.weatherIcon}/>
       </div>
     );
   }
