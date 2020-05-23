@@ -15,17 +15,17 @@ const Forecast = (props) =>{
 			<div className='container' margin='3rem'>
 			{forecast.map((value, index) => {
 				console.log(value.weather[0].icon)
-				let iconUrl = `http://openweathermap.org/img/wn/${value.weather[0].icon}.png`
+				let iconUrl = `http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`
 				console.log(iconUrl)
 				return (
 					<Table key={index}>
 						<tbody>
 							<tr>
-								<td align="right" width="20%">{dayOfWeek(value.dt)}</td>
-								<td align="center" width="10%">{returnTime(value.dt)}</td>
+								<td align="center" width="10%">{dayOfWeek(value.dt)}</td>
+								<td align="center" width="5%">{returnTime(value.dt)}</td>
 								{/*<td align='center' width="20%">{value.weather[0].description}</td>*/}
 								<td align='center' width="5%"><img src={iconUrl} alt=""></img></td>
-								<td align="left" width="20%">{Math.round(value.main.temp)}&deg;F</td>
+								<td align="center" width="10%">{Math.round(value.main.temp)}&deg;F</td>
 							</tr>
 						</tbody>
 					</Table>
