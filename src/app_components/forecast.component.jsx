@@ -14,18 +14,18 @@ const Forecast = (props) =>{
 		(forecast ? 
 			<div className='container' margin='3rem'>
 			{forecast.map((value, index) => {
-				console.log(value.weather[0].icon)
 				let iconUrl = `http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`
-				console.log(iconUrl)
 				return (
 					<Table key={index}>
 						<tbody>
 							<tr>
 								<td align="center" width="10%">{dayOfWeek(value.dt)}</td>
 								<td align="center" width="5%">{returnTime(value.dt)}</td>
-								{/*<td align='center' width="20%">{value.weather[0].description}</td>*/}
-								<td align='center' width="5%"><img src={iconUrl} alt=""></img></td>
-								<td align="center" width="10%">{Math.round(value.main.temp)}&deg;F</td>
+								<td align='center' width="5%">
+									<img src={iconUrl} alt=""></img>
+									<p>{value.weather[0].description}</p>
+								</td>
+								<td align="center" width="10%">{Math.round(value.temp)}&deg;F</td>
 							</tr>
 						</tbody>
 					</Table>
@@ -51,10 +51,11 @@ function returnTime(dt){
 	let hour = date.getHours();
 	let ampm = "am";
 
-
 	if(hour>12){
 		ampm="pm";
 		hour= hour-12;
+	} else if(hour===0){
+		hour=12
 	}
 
 	var time = hour + ampm;

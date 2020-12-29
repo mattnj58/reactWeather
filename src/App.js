@@ -14,9 +14,9 @@ import './App.css';
 import "weather-icons/css/weather-icons.css"; //git project from https://github.com/erikflowers/weather-icons
 import "bootstrap/dist/css/bootstrap.min.css";
 import Forecast from './app_components/forecast.component';
+require('dotenv').config();
 
 let envKey = process.env.REACT_APP_API_URL;
-console.log(envKey)
 
 /**
  * Here is the api documentation for openweathermap
@@ -50,13 +50,15 @@ class App extends React.Component{
      country:undefined,
      icon:undefined,
      main:undefined,
-     temp:undefined,
-     temp_max:undefined,
-     temp_min:undefined,
+     temp:0,
+     temp_max:0,
+     temp_min:0,
      description:"",
      error:false,
      forecast:undefined,
      fIcons:undefined,
+     lat: 0,
+     long: 0,
      resStatus:200
    }
    
@@ -70,6 +72,41 @@ class App extends React.Component{
     Clouds: "wi-day-fog"
    }
  }
+
+
+ componentDidMount(){
+   this.getPosition()
+   .then((position) => {
+     this.getGeoWeather(position.coords.latitude, position.coords.longitude)
+  })
+  .catch((err) => {
+    if(err.code === err.PERMISSION_DENIED){
+      //TODO: need to figure out a way for the user to search if they deny geolocation permission
+    }
+    console.log(err.message);
+  })
+}
+
+getPosition = () => {
+  return new Promise(function (resolve, reject){
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
+
+getGeoWeather = async (latitude,longitude) => {
+  const forCall = await fetch(`${apiKey.base}onecall?appid=${apiKey.key}&lat=${latitude}&lon=${longitude}&units=imperial&exclude=minutely`);
+  const data = await forCall.json();
+  this.setState({
+    date: currentDate(new Date()),
+    city: data.name,
+    temp: Math.round(data.current.temp),
+    icon: this.getWeatherIcon(data.current.weather[0].icon),
+    description: data.current.weather[0].description,
+    forecast: data.hourly
+  });
+
+  this.getWeatherIcon(this.weatherIcon, data.current.weather[0].id);
+}
 
  getWeatherIcon(icons, rangeId){
   switch(true){
@@ -115,7 +152,8 @@ class App extends React.Component{
     if(api_call.status===200){
 
       let days=for_res.list;
-      let forIcons=[]
+
+      let forIcons=[];
 
       for (var fIcon = 0; fIcon < days.length; fIcon++) {
         forIcons.push(days[fIcon].weather[0].icon);
@@ -129,8 +167,8 @@ class App extends React.Component{
         temp_min:Math.round(res.main.temp_min),
         description:res.weather[0].description,
         icon: this.getWeatherIcon(res.weather[0].icon),
-        forecast:days,
-        fIcons: forIcons,
+        forecast: null,
+        fIcons: null,
         error:false,
         resStatus:api_call.status
       });
