@@ -39,8 +39,6 @@ const currentDate=(d)=>{
   return `${day} ${month} ${date}, ${year}`
 }
 
-
-
 class App extends React.Component{
  constructor(){
    super();
@@ -72,7 +70,6 @@ class App extends React.Component{
     Clouds: "wi-day-fog"
    }
  }
-
 
  componentDidMount(){
    this.getPosition()
@@ -167,8 +164,8 @@ getGeoWeather = async (latitude,longitude) => {
         temp_min:Math.round(res.main.temp_min),
         description:res.weather[0].description,
         icon: this.getWeatherIcon(res.weather[0].icon),
-        forecast: null,
-        fIcons: null,
+        forecast: 'null',
+        fIcons: "null",
         error:false,
         resStatus:api_call.status
       });
@@ -188,6 +185,7 @@ getGeoWeather = async (latitude,longitude) => {
   render(){
     return(
       <div className='App'>
+        <h1>React Weather</h1>
         <Form loadweather={this.getWeather} resStatus={this.state.resStatus}/>
         <Weather 
         date={this.state.date}

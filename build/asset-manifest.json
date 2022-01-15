@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/reactweather/static/css/main.e2187a21.chunk.css",
-    "main.js": "/reactweather/static/js/main.05a02e1e.chunk.js",
-    "main.js.map": "/reactweather/static/js/main.05a02e1e.chunk.js.map",
+    "main.js": "/reactweather/static/js/main.124f3b96.chunk.js",
+    "main.js.map": "/reactweather/static/js/main.124f3b96.chunk.js.map",
     "runtime-main.js": "/reactweather/static/js/runtime-main.02df3c50.js",
     "runtime-main.js.map": "/reactweather/static/js/runtime-main.02df3c50.js.map",
-    "static/css/2.d02ea496.chunk.css": "/reactweather/static/css/2.d02ea496.chunk.css",
-    "static/js/2.a797d579.chunk.js": "/reactweather/static/js/2.a797d579.chunk.js",
-    "static/js/2.a797d579.chunk.js.map": "/reactweather/static/js/2.a797d579.chunk.js.map",
+    "static/css/2.de05175e.chunk.css": "/reactweather/static/css/2.de05175e.chunk.css",
+    "static/js/2.a2614429.chunk.js": "/reactweather/static/js/2.a2614429.chunk.js",
+    "static/js/2.a2614429.chunk.js.map": "/reactweather/static/js/2.a2614429.chunk.js.map",
     "index.html": "/reactweather/index.html",
-    "precache-manifest.6011b3d82d8e2787e62c1e58a6da606d.js": "/reactweather/precache-manifest.6011b3d82d8e2787e62c1e58a6da606d.js",
+    "precache-manifest.9755b4dd56dd9f40079418eee264f262.js": "/reactweather/precache-manifest.9755b4dd56dd9f40079418eee264f262.js",
     "service-worker.js": "/reactweather/service-worker.js",
-    "static/css/2.d02ea496.chunk.css.map": "/reactweather/static/css/2.d02ea496.chunk.css.map",
+    "static/css/2.de05175e.chunk.css.map": "/reactweather/static/css/2.de05175e.chunk.css.map",
     "static/css/main.e2187a21.chunk.css.map": "/reactweather/static/css/main.e2187a21.chunk.css.map",
-    "static/js/2.a797d579.chunk.js.LICENSE.txt": "/reactweather/static/js/2.a797d579.chunk.js.LICENSE.txt",
-    "static/media/weather-icons.css": "/reactweather/static/media/weathericons-regular-webfont.ed0943f2.svg"
+    "static/js/2.a2614429.chunk.js.LICENSE.txt": "/reactweather/static/js/2.a2614429.chunk.js.LICENSE.txt",
+    "static/media/weather-icons.css": "/reactweather/static/media/weathericons-regular-webfont.ecaf8b48.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.02df3c50.js",
-    "static/css/2.d02ea496.chunk.css",
-    "static/js/2.a797d579.chunk.js",
+    "static/css/2.de05175e.chunk.css",
+    "static/js/2.a2614429.chunk.js",
     "static/css/main.e2187a21.chunk.css",
-    "static/js/main.05a02e1e.chunk.js"
+    "static/js/main.124f3b96.chunk.js"
   ]
 }

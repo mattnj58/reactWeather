@@ -4,17 +4,40 @@ import './forecast.style.css'
 /** Dependencies*/
 import "weather-icons/css/weather-icons.css"; //git project from https://github.com/erikflowers/weather-icons
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Table } from 'react-bootstrap';
+import { Row, Table } from 'react-bootstrap';
+import { Container } from 'react-bootstrap/lib/Tab';
+import { object } from 'prop-types';
 
 
 const Forecast = (props) =>{
 	let forecast=props.forecast;
 
+	const weatherIcons={
+		Thunderstorm: "wi-thunderstorm",
+		Drizzle: "wi-sleet",
+		Rain: "wi-storm-showers",
+		Snow: "wi-snow",
+		Atmosphere: "wi-fog",
+		Clear: "wi-day-sunny",
+		Clouds: "wi-day-fog"
+	}
+
 	return (
+
+		// (this.forecast? 
+		// 	<ul>
+		// 	{
+		// 		this.forecast.map(function(hours){
+		// 			return <li>{hours.weather[0].icon}</li>
+		// 		})
+		// 	}
+		// </ul>:null)
+
 		(forecast ? 
 			<div className='container' margin='3rem'>
 			{forecast.map((value, index) => {
 				let iconUrl = `http://openweathermap.org/img/wn/${value.weather[0].icon}.png`
+				// getWeatherIcon(weatherIcons, value.weather[0].id);
 				return (
 					<Table key={index}>
 						<tbody>
@@ -22,7 +45,9 @@ const Forecast = (props) =>{
 								<td align="center" width="10%">{dayOfWeek(value.dt)}</td>
 								<td align="center" width="5%">{returnTime(value.dt)}</td>
 								<td align='center' width="5%">
-									<img src={iconUrl} alt=""></img>
+									{/* <p className={`wi ${value.icon} display-1`}></p> */}
+									{/* <i>{getWeatherIcons(weatherIcons,value.weather[0].icon)}</i> */}
+									<img src={"https://openweathermap.org/img/wn/"+value.weather[0].icon+".png"}/> 
 									<p>{value.weather[0].description}</p>
 								</td>
 								<td align="center" width="10%">{Math.round(value.temp)}&deg;F</td>
@@ -34,7 +59,6 @@ const Forecast = (props) =>{
 		:null)
 	)
 }
-
 
 function dayOfWeek(dt){
 	let date = new Date(dt*1000);
@@ -62,5 +86,33 @@ function returnTime(dt){
 
 	return time;
 }
+
+// function getWeatherIcon(icons, rangeId){
+//   switch(true){
+//     case rangeId >= 200 && rangeId < 232:
+//         this.setState({ icon: icons.Thunderstorm });
+//         break;
+//       case rangeId >= 300 && rangeId <= 321:
+//         this.setState({ icon: icons.Drizzle });
+//         break;
+//       case rangeId >= 500 && rangeId <= 521:
+//         this.setState({ icon: icons.Rain });
+//         break;
+//       case rangeId >= 600 && rangeId <= 622:
+//         this.setState({ icon: icons.Snow });
+//         break;
+//       case rangeId >= 701 && rangeId <= 781:
+//         this.setState({ icon: icons.Atmosphere });
+//         break;
+//       case rangeId === 800:
+//         this.setState({ icon: icons.Clear });
+//         break;
+//       case rangeId >= 801 && rangeId <= 804:
+//         this.setState({ icon: icons.Clouds });
+//         break;
+//       default:
+//         this.setState({ icon: icons.Clouds });
+//   }
+//  }
 
 export default Forecast;
