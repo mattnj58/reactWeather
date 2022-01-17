@@ -12,6 +12,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-bootstrap": "^0.32.4",
+    "react-collapsible": "^2.8.4",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.3.0",
     "weather-icons": "git+https://github.com/erikflowers/weather-icons.git"

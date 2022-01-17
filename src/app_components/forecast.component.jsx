@@ -2,58 +2,29 @@ import React from 'react';
 import './forecast.style.css'
 
 /** Dependencies*/
-import "weather-icons/css/weather-icons.css"; //git project from https://github.com/erikflowers/weather-icons
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Table } from 'react-bootstrap';
-import { Container } from 'react-bootstrap/lib/Tab';
-import { object } from 'prop-types';
-
+import Collapsible from 'react-collapsible';
 
 const Forecast = (props) =>{
 	let forecast=props.forecast;
-
-	const weatherIcons={
-		Thunderstorm: "wi-thunderstorm",
-		Drizzle: "wi-sleet",
-		Rain: "wi-storm-showers",
-		Snow: "wi-snow",
-		Atmosphere: "wi-fog",
-		Clear: "wi-day-sunny",
-		Clouds: "wi-day-fog"
-	}
-
+	console.log(forecast)
 	return (
 
-		// (this.forecast? 
-		// 	<ul>
-		// 	{
-		// 		this.forecast.map(function(hours){
-		// 			return <li>{hours.weather[0].icon}</li>
-		// 		})
-		// 	}
-		// </ul>:null)
+		// <Collapsible trigger={forecast[0].weather[0].main}>
+		// 	<p>Hello there</p>
+		// </Collapsible>
 
 		(forecast ? 
-			<div className='container' margin='3rem'>
+			<div className='container'>
 			{forecast.map((value, index) => {
-				let iconUrl = `http://openweathermap.org/img/wn/${value.weather[0].icon}.png`
-				// getWeatherIcon(weatherIcons, value.weather[0].id);
-				return (
-					<Table key={index}>
-						<tbody>
-							<tr>
-								<td align="center" width="10%">{dayOfWeek(value.dt)}</td>
-								<td align="center" width="5%">{returnTime(value.dt)}</td>
-								<td align='center' width="5%">
-									{/* <p className={`wi ${value.icon} display-1`}></p> */}
-									{/* <i>{getWeatherIcons(weatherIcons,value.weather[0].icon)}</i> */}
-									<img src={"https://openweathermap.org/img/wn/"+value.weather[0].icon+".png"}/> 
-									<p>{value.weather[0].description}</p>
-								</td>
-								<td align="center" width="10%">{Math.round(value.temp)}&deg;F</td>
-							</tr>
-						</tbody>
-					</Table>
+				return(
+					<Collapsible trigger={returnTime(value.dt)} triggerStyle={{background:'black', color:"white", margin:"200px"}} >
+						<img src={`http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`} width="150" height="150" alt="Weather Icon"/>
+						<div margin="20px" background="red">
+							<h3>{Math.round(value.temp)}</h3>
+							<h3>{value.weather[0].description}</h3>
+						</div>
+					</Collapsible>
 				)
 			})} </div>
 		:null)
@@ -86,33 +57,5 @@ function returnTime(dt){
 
 	return time;
 }
-
-// function getWeatherIcon(icons, rangeId){
-//   switch(true){
-//     case rangeId >= 200 && rangeId < 232:
-//         this.setState({ icon: icons.Thunderstorm });
-//         break;
-//       case rangeId >= 300 && rangeId <= 321:
-//         this.setState({ icon: icons.Drizzle });
-//         break;
-//       case rangeId >= 500 && rangeId <= 521:
-//         this.setState({ icon: icons.Rain });
-//         break;
-//       case rangeId >= 600 && rangeId <= 622:
-//         this.setState({ icon: icons.Snow });
-//         break;
-//       case rangeId >= 701 && rangeId <= 781:
-//         this.setState({ icon: icons.Atmosphere });
-//         break;
-//       case rangeId === 800:
-//         this.setState({ icon: icons.Clear });
-//         break;
-//       case rangeId >= 801 && rangeId <= 804:
-//         this.setState({ icon: icons.Clouds });
-//         break;
-//       default:
-//         this.setState({ icon: icons.Clouds });
-//   }
-//  }
 
 export default Forecast;

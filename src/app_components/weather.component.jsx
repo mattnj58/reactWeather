@@ -2,7 +2,7 @@ import React from 'react';
 
 const Weather = (props) => {
     return(
-        <div className='container' margin="3rem" font='white' className='p-4'>
+        <div margin="3rem" font='white' className='p-4'>
             <div className='cards pt-4'>
                 <h1 className='py-4'>{props.date}</h1>
                 <h1>{props.city}</h1>
