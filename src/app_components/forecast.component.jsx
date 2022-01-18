@@ -4,30 +4,32 @@ import './forecast.style.css'
 /** Dependencies*/
 import "bootstrap/dist/css/bootstrap.min.css";
 import Collapsible from 'react-collapsible';
+import { ClipLoader } from 'react-spinners';
 
 const Forecast = (props) =>{
 	let forecast=props.forecast;
-	console.log(forecast)
 	return (
-
-		// <Collapsible trigger={forecast[0].weather[0].main}>
-		// 	<p>Hello there</p>
-		// </Collapsible>
-
 		(forecast ? 
-			<div className='container'>
+			<div>
 			{forecast.map((value, index) => {
+
+				let iconUrl = `http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`;
+
 				return(
-					<Collapsible trigger={returnTime(value.dt)} triggerStyle={{background:'black', color:"white", margin:"200px"}} >
-						<img src={`http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`} width="150" height="150" alt="Weather Icon"/>
-						<div margin="20px" background="red">
-							<h3>{Math.round(value.temp)}</h3>
-							<h3>{value.weather[0].description}</h3>
+					<Collapsible className='Collapsible' trigger={`${dayOfWeek(value.dt)}`} >
+						<div className='Collapsible_contentInner'>
+							<img src={iconUrl} width="150" height="150" alt="Weather Icon"/>
+							<h3>{Math.round(value.temp.day)}&deg;F</h3>
+							{minMaxTemp(value.temp.max, value.temp.min)}
+							<h4>{value.weather[0].description.toUpperCase()}</h4>
 						</div>
 					</Collapsible>
 				)
-			})} </div>
-		:null)
+			})}
+			</div>
+		:<div>
+			<ClipLoader/>
+		</div>)
 	)
 }
 
@@ -57,5 +59,17 @@ function returnTime(dt){
 
 	return time;
 }
+
+function minMaxTemp(max,min){
+    if(max && min){
+        return(
+			<div>
+                <h5 width='50%' margin="auto">High: {Math.round(max)}&deg;F</h5>
+                <h5 width="50%" margin="auto">Low: {Math.round(min)}&deg;F</h5>
+			</div>
+        );
+    }
+}
+
 
 export default Forecast;

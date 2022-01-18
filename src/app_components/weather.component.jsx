@@ -1,4 +1,5 @@
 import React from 'react';
+import { ClipLoader } from 'react-spinners';
 
 const Weather = (props) => {
     return(
@@ -9,7 +10,7 @@ const Weather = (props) => {
                 <h5 className='py-4'>
                     <i className={`wi ${props.weatherIcon} display-1`}></i>
                 </h5>
-                {props.temp ? <h1 className='py-2'>{props.temp}&deg;F</h1> : null}
+                {props.temp ? <h1 className='py-2'>{props.temp}&deg;F</h1> : <div><ClipLoader/></div>}
                 <h4 className='py-3'>{props.description}</h4>
                 {/*shows the min and max temps*/}
                 {minMaxTemp(props.temp_max, props.temp_min)}
@@ -22,8 +23,8 @@ function minMaxTemp(max,min){
     if(min && max){
         return(
             <h3>
-            <span className='px-4'>High: {max}&deg;F</span>
-            <span className='px-4'>Low: {min}&deg;F</span>
+                <span className='px-4'>High: {max}&deg;F</span>
+                <span className='px-4'>Low: {min}&deg;F</span>
             </h3>
         );
     }

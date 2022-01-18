@@ -57,7 +57,8 @@ class App extends React.Component{
      fIcons:undefined,
      lat: 0,
      long: 0,
-     resStatus:200
+     daily:"",
+     hourly:""
    }
    
    this.weatherIcon={
@@ -93,13 +94,17 @@ getPosition = () => {
 getGeoWeather = async (latitude,longitude) => {
   const forCall = await fetch(`${apiKey.base}onecall?appid=${apiKey.key}&lat=${latitude}&lon=${longitude}&units=imperial&exclude=minutely`);
   const data = await forCall.json();
+
   this.setState({
     date: currentDate(new Date()),
     city: data.name,
     temp: Math.round(data.current.temp),
     icon: this.getWeatherIcon(data.current.weather[0].icon),
     description: data.current.weather[0].description,
-    forecast: data.hourly
+    forecast: data.daily,
+    // daily: data.daily,
+    // hourly:data.hourly
+    resStatus:200
   });
 
   this.getWeatherIcon(this.weatherIcon, data.current.weather[0].id);
@@ -164,8 +169,6 @@ getGeoWeather = async (latitude,longitude) => {
         temp_min:Math.round(res.main.temp_min),
         description:res.weather[0].description,
         icon: this.getWeatherIcon(res.weather[0].icon),
-        forecast: 'null',
-        fIcons: "null",
         error:false,
         resStatus:api_call.status
       });
