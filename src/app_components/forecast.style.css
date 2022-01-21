@@ -2,9 +2,7 @@
 	background-color: grey;
 	margin: auto;
 	margin-top: 5px;
-	width:50%;
-	/* filter:blur(8px); */
-	/* -webkit-filter: blur(8px); */
+	width:50vw;
 }
 
 .Collapsible{
