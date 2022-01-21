@@ -14,12 +14,12 @@ const Forecast = (props) =>{
 			<div>
 			{forecast.map((value) => {
 
-				let iconUrl = `http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`;
+				let iconUrl = `http://openweathermap.org/img/wn/${value.weather[0].icon}.png`;
 
 				return(
 					<Collapsible className='Collapsible' trigger={`${dayOfWeek(value.dt)}`} >
 						<div className='Collapsible_contentInner'>
-							<img src={iconUrl} width="150" height="150" alt="Weather Icon"/>
+							<img src={iconUrl} width="125vw" height="125vw" alt={value.weather[0].main}/>
 							<h5>{value.weather[0].main.toUpperCase()}</h5> 
 							<h3>{Math.round(value.temp.day)}&deg;F</h3>
 							{minMaxTemp(value.temp.max, value.temp.min)}

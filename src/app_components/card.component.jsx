@@ -7,7 +7,7 @@ const Card = (props) => {
         (props ? 
             <div margin="auto">
                 <p>{returnTime(props.time)}</p>
-                <img src={iconUrl} alt={props.icon}/>
+                <img src={iconUrl} alt={props.main}/>
                 <p>{Math.round(props.temp)}&deg;F</p>
             </div>
         :<div>

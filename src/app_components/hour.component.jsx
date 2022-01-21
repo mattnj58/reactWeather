@@ -15,6 +15,7 @@ const Hour = (props) =>{
                         time={value.dt}
                         temp={value.temp} 
                         icon={value.weather[0].icon}
+                        main={value.weather[0].main}
                     />
 				)
 			})}
