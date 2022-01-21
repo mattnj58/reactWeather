@@ -8,6 +8,7 @@
 import React from 'react';
 import Weather from './app_components/weather.component';
 import Form from './app_components/form.component';
+import Hour from './app_components/hour.component';
 import './App.css';
 
 /** Dependencies*/
@@ -102,8 +103,7 @@ getGeoWeather = async (latitude,longitude) => {
     icon: this.getWeatherIcon(data.current.weather[0].icon),
     description: data.current.weather[0].description,
     forecast: data.daily,
-    // daily: data.daily,
-    // hourly:data.hourly
+    hourly:data.hourly,
     resStatus:200
   });
 
@@ -198,6 +198,7 @@ getGeoWeather = async (latitude,longitude) => {
         temp_min={this.state.temp_min}
         description={this.state.description}
         weatherIcon={this.state.icon}/>
+        <Hour hourly={this.state.hourly}/>
         <Forecast forecast={this.state.forecast} icon={this.weatherIcon}/>
       </div>
     );

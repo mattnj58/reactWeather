@@ -10,8 +10,8 @@ const Weather = (props) => {
                 <h5 className='py-4'>
                     <i className={`wi ${props.weatherIcon} display-1`}></i>
                 </h5>
-                {props.temp ? <h1 className='py-2'>{props.temp}&deg;F</h1> : <div><ClipLoader/></div>}
                 <h4 className='py-3'>{props.description}</h4>
+                {props.temp ? <h1 className='py-2'>{props.temp}&deg;F</h1> : <div><ClipLoader/></div>}
                 {/*shows the min and max temps*/}
                 {minMaxTemp(props.temp_max, props.temp_min)}
             </div>
