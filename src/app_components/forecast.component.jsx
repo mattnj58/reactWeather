@@ -19,7 +19,7 @@ const Forecast = (props) =>{
 				return(
 					<Collapsible className='Collapsible' trigger={`${dayOfWeek(value.dt)}`} >
 						<div className='Collapsible_contentInner'>
-							<img src={iconUrl} width="125vw" height="125vw" alt={value.weather[0].main}/>
+							<img src={`http://openweathermap.org/img/wn/${props.icon}@2x.png`} width="125vw" height="125vw" alt={value.weather[0].main}/>
 							<h5>{value.weather[0].main.toUpperCase()}</h5> 
 							<h3>{Math.round(value.temp.day)}&deg;F</h3>
 							{minMaxTemp(value.temp.max, value.temp.min)}
